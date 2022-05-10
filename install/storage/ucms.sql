@@ -120,7 +120,12 @@ INSERT INTO `{{prefix}}meta` (`key`, `value`) VALUES
 ('date_format', 'jS M, Y'),
 ('home_page', '1'),
 ('posts_page',  '1'),
-('posts_per_page',  '6');
+('posts_per_page',  '6'),
+('custom_acc_facebook', 'ulteriortecnologia'),
+('custom_acc_insta', 'ulteriortecnologia'),
+('custom_endereco', 'Rua Martin Luther King, 460 Taubaté-SP'),
+('custom_sobre', 'Site criado por Denis Souza'),
+('custom_tags', 'notebook'),
 
 INSERT INTO `{{prefix}}pages` (`slug`, `name`, `title`, `content`, `status`, `redirect`, `show_in_menu`, `menu_order`) VALUES
 ('posts', 'Posts', 'My posts and thoughts', 'Welcome!', 'published', '', '1', '0');
@@ -131,18 +136,9 @@ INSERT INTO `{{prefix}}pages` (`slug`, `name`, `title`, `content`, `status`, `re
 INSERT INTO `{{prefix}}posts` (`title`, `slug`, `description`, `html`, `css`, `js`, `created`, `author`, `category`, `status`, `comments`) VALUES
 ('Olá mundo!', 'ola-mundo', 'Esse é um post de teste.', 'Esse é um post de teste', '', '', '{{now}}', '1', '1', 'published', '0');
 
+INSERT INTO `{{prefix}}extend` (`id`, `type`, `field`, `pagetype`, `key`, `label`, `attributes`) VALUES
+(1, 'page', 'html', 'all', 'html', 'Html', ''),
+(2, 'post', 'image', 'all', 'img_artigo', 'Imagem do quadro', '{"type":"","size":{"width":"200","height":"200"}}');
 
-CREATE TABLE `{{prefix}}v_destaques` (
-	`id` INT(6) NOT NULL,
-	`slug` VARCHAR(150) NOT NULL COLLATE 'utf8mb4_general_ci',
-	`description` TEXT NOT NULL COLLATE 'utf8mb4_general_ci',
-	`created` DATETIME NOT NULL,
-	`status` ENUM('draft','published','archived') NOT NULL COLLATE 'utf8mb4_general_ci',
-	`author` INT(6) NOT NULL,
-	`category` INT(6) NOT NULL,
-	`updated` DATETIME NULL
-) ENGINE=MyISAM;
-
-DROP TABLE IF EXISTS `{{prefix}}v_destaques`;
-
-CREATE ALGORITHM=UNDEFINED SQL SECURITY DEFINER VIEW `{{prefix}}v_destaques` AS select `p`.`id` AS `id`,`p`.`slug` AS `slug`,`p`.`description` AS `description`,`p`.`created` AS `created`,`p`.`status` AS `status`,`p`.`author` AS `author`,`p`.`category` AS `category`,`p`.`updated` AS `updated` from (`{{prefix}}posts` `p` join `{{prefix}}categories` `c`) where `p`.`category` = `c`.`id` and `c`.`slug` = 'destaques';
+CREATE VIEW `{{prefix}}v_destaques` AS SELECT p.id, p.slug, p.description, p.created, p.status, p.author, p.category,p.updated
+FROM `{{prefix}}posts` AS p INNER JOIN `{{prefix}}categories` AS c WHERE p.category = c.id AND c.slug = 'destaques';

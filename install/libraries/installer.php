@@ -143,7 +143,7 @@ class installer
     {
         $database = $settings['database'];
 
-        $sql = Braces::compile(APP . 'storage/anchor.sql', [
+        $sql = Braces::compile(APP . 'storage/ucms.sql', [
             'now'     => gmdate('Y-m-d H:i:s'),
             'charset' => DB::DEFAULT_CHARSET,
             'prefix'  => isset($database['prefix']) ? $database['prefix'] : '',
