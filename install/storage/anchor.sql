@@ -131,5 +131,18 @@ INSERT INTO `{{prefix}}pages` (`slug`, `name`, `title`, `content`, `status`, `re
 INSERT INTO `{{prefix}}posts` (`title`, `slug`, `description`, `html`, `css`, `js`, `created`, `author`, `category`, `status`, `comments`) VALUES
 ('Olá mundo!', 'ola-mundo', 'Esse é um post de teste.', 'Esse é um post de teste', '', '', '{{now}}', '1', '1', 'published', '0');
 
-CREATE VIEW `{{prefix}}v_destaques` AS SELECT `p.id`, `p.slug`, `p.description`, `p.created`, `p.status`, `p.author`, `p.category`,`p.updated`
-FROM `{{prefix}}posts` AS `p` INNER join `{{prefix}}categories` AS `c` WHERE `p.category = c.id` AND `c.slug = destaques`;
+
+CREATE TABLE `{{prefix}}v_destaques` (
+	`id` INT(6) NOT NULL,
+	`slug` VARCHAR(150) NOT NULL COLLATE 'utf8mb4_general_ci',
+	`description` TEXT NOT NULL COLLATE 'utf8mb4_general_ci',
+	`created` DATETIME NOT NULL,
+	`status` ENUM('draft','published','archived') NOT NULL COLLATE 'utf8mb4_general_ci',
+	`author` INT(6) NOT NULL,
+	`category` INT(6) NOT NULL,
+	`updated` DATETIME NULL
+) ENGINE=MyISAM;
+
+DROP TABLE IF EXISTS `{{prefix}}v_destaques`;
+
+CREATE ALGORITHM=UNDEFINED SQL SECURITY DEFINER VIEW `{{prefix}}v_destaques` AS select `p`.`id` AS `id`,`p`.`slug` AS `slug`,`p`.`description` AS `description`,`p`.`created` AS `created`,`p`.`status` AS `status`,`p`.`author` AS `author`,`p`.`category` AS `category`,`p`.`updated` AS `updated` from (`{{prefix}}posts` `p` join `{{prefix}}categories` `c`) where `p`.`category` = `c`.`id` and `c`.`slug` = 'destaques';
