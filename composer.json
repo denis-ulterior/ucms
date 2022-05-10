@@ -1,0 +1,26 @@
+{
+    "name": "ulterior/u-cms",
+    "description": "U-CMS é um gestor de conteúdo continuado a partir do anchor cms",
+    "version": "0.22.4.24",
+    "keywords": ["CMS", "u-cms", "Ulterior tecnologia"],
+    "license": "GPL-3.0",
+    "authors": [
+         {
+            "name": "Denis Souza",
+            "email": "denis.souza@ulteriorti.com.br"
+        }
+    ],
+    "autoload": {
+        "files": ["vendor/ulteriorti/filtrainput.php"]
+    },
+    "require": {
+        "php": ">=5.6",
+        "ircmaxell/random-lib": "^1.1",
+        "ircmaxell/password-compat": "^1.0",
+        "indigophp/hash-compat": "^1.1"
+    },
+  "require-dev": {
+    "peridot-php/peridot": "^1.19",
+        "peridot-php/leo": "^1.6"
+  }
+}

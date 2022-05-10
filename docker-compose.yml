@@ -1,0 +1,29 @@
+version: "2"
+
+services:
+
+  # Apache Stack
+  u:
+    build: .
+    container_name: u_cms
+    ports:
+      - "80:80"
+    volumes:
+      - .:/var/www/html
+    environment:
+      COMPOSE_PROJECT_NAME: "u_cms"
+
+  # Database
+  mysql:
+    image: mariadb
+    container_name: u_cms_mysql
+    ports:
+      - 3306:3306
+    environment:
+      MYSQL_ROOT_PASSWORD: "password"
+      MYSQL_DATABASE: "u_cms"
+      MYSQL_USER: "username"
+      MYSQL_PASSWORD: "password"
+      COMPOSE_PROJECT_NAME: "u_cms"
+    logging:
+      driver: none
