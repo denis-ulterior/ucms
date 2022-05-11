@@ -23,10 +23,6 @@ Thumbs.db
 # user mod_rewrite
 /.htaccess
 
-# debug and custom themes
-/themes/*
-!/themes/UlteriorTI/*
-
 # uploaded content
 /content/*
 !/content/index.php
