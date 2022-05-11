@@ -23,4 +23,9 @@ U-CMS é um CMS simples baseado no projeto descontinuado do AnchorCMS, aproveita
 8. Para segurança remova a pasta `install` quando terminar.
 9. É necessário criar manualmente a view com o código a seguir, trocando {{prefix}} pelo prefixo,o padrao é cms_
 
-CREATE VIEW {{prefix}}v_destaques AS SELECT p.id, p.slug, p.description, p.created, p.status, p.author, p.category,p.updated FROM {{prefix}}posts AS p INNER join {{prefix}}categories AS c WHERE p.category = c.id AND c.slug = 'destaques';
+CREATE VIEW {{prefix}}v_destaques AS SELECT p.id, p.title, p.slug, p.description, p.created, p.status, p.author, p.category,p.updated FROM {{prefix}}posts AS p INNER join {{prefix}}categories AS c WHERE p.category = c.id AND c.slug = 'destaques';
+
+EXEMPLO PADRAO:
+
+CREATE VIEW cms_v_destaques AS SELECT p.id, p.title, p.slug, p.description, p.created, p.status, p.author, p.category,p.updated
+FROM cms_posts AS p INNER JOIN cms_categories AS c WHERE p.category = c.id AND c.slug = "destaques";

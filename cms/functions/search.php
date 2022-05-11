@@ -79,7 +79,7 @@ function has_search_pagination()
  *
  * @return string
  */
-function search_next($text = 'Next', $default = '')
+function search_next($text = 'Proximo', $default = '')
 {
     $per_page    = Config::meta('posts_per_page');
     $page        = Registry::get('page_offset');
@@ -109,7 +109,7 @@ function search_next($text = 'Next', $default = '')
  *
  * @return string
  */
-function search_prev($text = 'Previous', $default = '')
+function search_prev($text = 'Anterior', $default = '')
 {
     $per_page    = Config::meta('posts_per_page');
     $page        = Registry::get('page_offset');

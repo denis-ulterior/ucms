@@ -41,6 +41,13 @@ abstract class record
     public static $table;
 
     /**
+     * The database view
+     *
+     * @var string
+     */
+    public static $view;
+
+    /**
      * The database table primary key
      *
      * @var string

@@ -33,6 +33,13 @@ abstract class builder
     protected $table;
 
     /**
+     * table
+     *
+     * @var
+     */
+    protected $view;
+
+    /**
      * offset
      *
      * @var

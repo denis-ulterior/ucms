@@ -28,6 +28,13 @@ class query extends Builder
      */
     public $table;
 
+     /**
+     * The current database table
+     *
+     * @var string
+     */
+    public $view;
+
     /**
      * Database connector object
      *
@@ -133,6 +140,24 @@ class query extends Builder
         }
 
         return new static($table, $connection);
+    }
+
+    /**
+     * Create a new database query instance for view
+     *
+     * @param string $view      view to create a query for
+     * @param null   $connection connection to create a query for
+     *
+     * @return \System\database\query Query
+     * @throws \ErrorException
+     */
+    public static function view($view, $connection = null)
+    {
+        if (is_null($connection)) {
+            $connection = DB::connection();
+        }
+
+        return new static($view, $connection);
     }
 
     /**

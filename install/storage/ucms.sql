@@ -23,6 +23,7 @@ CREATE TABLE `{{prefix}}extend` (
   `id` int(6) NOT NULL AUTO_INCREMENT,
   `type` enum('post','page','user') NOT NULL,
   `field` enum('text','html','image','file','toggle') NOT NULL,
+  `pagetype` varchar(140) NOT NULL DEFAULT 'all',
   `key` varchar(160) NOT NULL,
   `label` varchar(160) NOT NULL,
   `attributes` text NOT NULL,
@@ -125,7 +126,7 @@ INSERT INTO `{{prefix}}meta` (`key`, `value`) VALUES
 ('custom_acc_insta', 'ulteriortecnologia'),
 ('custom_endereco', 'Rua Martin Luther King, 460 Taubaté-SP'),
 ('custom_sobre', 'Site criado por Denis Souza'),
-('custom_tags', 'notebook'),
+('custom_tags', 'notebook');
 
 INSERT INTO `{{prefix}}pages` (`slug`, `name`, `title`, `content`, `status`, `redirect`, `show_in_menu`, `menu_order`) VALUES
 ('posts', 'Posts', 'My posts and thoughts', 'Welcome!', 'published', '', '1', '0');
@@ -136,9 +137,9 @@ INSERT INTO `{{prefix}}pages` (`slug`, `name`, `title`, `content`, `status`, `re
 INSERT INTO `{{prefix}}posts` (`title`, `slug`, `description`, `html`, `css`, `js`, `created`, `author`, `category`, `status`, `comments`) VALUES
 ('Olá mundo!', 'ola-mundo', 'Esse é um post de teste.', 'Esse é um post de teste', '', '', '{{now}}', '1', '1', 'published', '0');
 
-INSERT INTO `{{prefix}}extend` (`id`, `type`, `field`, `pagetype`, `key`, `label`, `attributes`) VALUES
-(1, 'page', 'html', 'all', 'html', 'Html', ''),
-(2, 'post', 'image', 'all', 'img_artigo', 'Imagem do quadro', '{"type":"","size":{"width":"200","height":"200"}}');
+INSERT INTO `{{prefix}}extend` (`type`, `field`, `pagetype`, `key`, `label`, `attributes`) VALUES
+('page', 'html', 'all', 'html', 'Html', ''),
+('post', 'image', 'all', 'img_artigo', 'Imagem do quadro', '{"type":"","size":{"width":"200","height":"200"}}');
 
 CREATE VIEW `{{prefix}}v_destaques` AS SELECT p.id, p.slug, p.description, p.created, p.status, p.author, p.category,p.updated
 FROM `{{prefix}}posts` AS p INNER JOIN `{{prefix}}categories` AS c WHERE p.category = c.id AND c.slug = 'destaques';
