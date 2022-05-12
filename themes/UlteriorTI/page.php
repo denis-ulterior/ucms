@@ -5,22 +5,25 @@
     <div class="carousel-item active">
       <img src="\ucms\themes\UlteriorTI\assets\carroussel\seguranca.opti.webp" class="d-block w-100" alt="...">
       <div class="carousel-caption d-none d-md-block">
-        <h5>First slide label</h5>
-        <p>Some representative placeholder content for the first slide.</p>
+        <h5>Cibersegurança</h5>
       </div>
     </div>
     <div class="carousel-item">
-      <img src="\ucms\themes\UlteriorTI\assets\carroussel\seguranca.opti.webp" class="d-block w-100" alt="...">
+      <img src="\ucms\themes\UlteriorTI\assets\carroussel\servidor.opti.webp" class="d-block w-100" alt="...">
       <div class="carousel-caption d-none d-md-block">
-        <h5>Second slide label</h5>
-        <p>Some representative placeholder content for the second slide.</p>
+        <h5>Servidores</h5>
       </div>
     </div>
     <div class="carousel-item">
-      <img src="\ucms\themes\UlteriorTI\assets\carroussel\seguranca.opti.webp" class="d-block w-100" alt="...">
+      <img src="\ucms\themes\UlteriorTI\assets\carroussel\reparo.opti.webp" class="d-block w-100" alt="...">
       <div class="carousel-caption d-none d-md-block">
-        <h5>Third slide label</h5>
-        <p>Some representative placeholder content for the third slide.</p>
+        <h5>Reparos eletrônicos</h5>
+      </div>
+    </div>
+    <div class="carousel-item">
+      <img src="\ucms\themes\UlteriorTI\assets\carroussel\infra.opti.webp" class="d-block w-100" alt="...">
+      <div class="carousel-caption d-none d-md-block">
+        <h5>Infraestrutura de TI</h5>
       </div>
     </div>
   </div>
@@ -35,18 +38,34 @@
 			</section>
 		</div>
 		<div class="col-sm-4 mt-4">
+      <!--
 			<div class="lateral">
         <h3>Anuncie aqui</h3>
 				<p>Anuncio será definido aqui</p>
-			</div>
+			</div>-->
       <div class="lateral">
-        <h3>Anuncie aqui</h3>
-				<p>Anuncio será definido aqui</p>
-			</div>
-      <div class="lateral">
-        <h3>Anuncie aqui</h3>
-				<p>Anuncio será definido aqui</p>
-			</div>
+      <div id="" class="carousel slide" data-bs-ride="carousel">
+      <div class="carousel-inner">
+        <H4>Notícias</h4>
+    <?php
+     $primeiro = true;
+    while(rwar_noticias()):
+    ?>
+      <div class="carousel-item <?php if($primeiro == true) echo ' active'?>">
+      <?php $primeiro = false; ?>
+            <a class="" href="<?php echo article_url(); ?>">
+            <img class='imgquadrolateral' src="<?php echo article_custom_field('img_artigo'); ?>">
+            </a>
+            <div class="centroimagem">
+              <h5><?php echo page_title('article'); ?></h5>
+            </div>
+      </div>
+        <?php endwhile; ?>
+        </div>
+    </div>
+  </div>
+   
+
 		</div>
 </div>
 

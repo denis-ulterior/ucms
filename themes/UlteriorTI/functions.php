@@ -170,6 +170,41 @@ function rwar_destaques($limit = 9) {
 	return $result;
 }
 
+function rwar_noticias($limit = 9) {
+	// only run on the first call
+	if( ! Registry::has('rwar_noticias')) {
+		// capture original article if one is set
+		if($article = Registry::get('article')) {
+			Registry::set('original_article', $article);
+		}
+	}
+
+	if( ! $posts = Registry::get('rwar_noticias')) {
+    $posts = noticias::where('status', '=', 'published')->sort('updated', 'desc')->take($limit)->get();
+		Registry::set('rwar_noticias', $posts = new Items($posts));
+	}
+
+	if($result = $posts->valid()) {
+		// register single post
+		Registry::set('article', $posts->current());
+
+		// move to next
+		$posts->next();
+	}
+	else {
+		// back to the start
+		$posts->rewind();
+
+		// reset original article
+		Registry::set('article', Registry::get('original_article'));
+
+		// remove items
+		Registry::set('rwar_noticias', false);
+	}
+
+	return $result;
+}
+
 function rwar_latest_posts($limit = 4) {
 	// only run on the first call
 	if( ! Registry::has('rwar_latest_posts')) {
