@@ -1,7 +1,7 @@
 <?php return array(
     'root' => array(
-        'pretty_version' => '0.22.4.24',
-        'version' => '0.22.4.24',
+        'pretty_version' => '22.5.10',
+        'version' => '22.5.10.0',
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -134,8 +134,8 @@
             'dev_requirement' => true,
         ),
         'ulterior/u-cms' => array(
-            'pretty_version' => '0.22.4.24',
-            'version' => '0.22.4.24',
+            'pretty_version' => '22.5.10',
+            'version' => '22.5.10.0',
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
