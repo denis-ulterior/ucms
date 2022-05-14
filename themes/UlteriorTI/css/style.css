@@ -85,6 +85,22 @@ h5{
   border-radius: 5px;
   
 }
+.imgquadrointerno {
+  object-fit:cover;
+  object-position: center;
+  margin-left: 0px;
+  margin-right: 0px;
+  opacity: 1;
+  height: 100%;
+  overflow: hidden;
+  width: 100%;
+  height: 307px;
+  border-radius: 5px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 15px;
+  
+}
 .imgquadrolateral {
   object-fit:cover;
   object-position: center;

@@ -1,5 +1,11 @@
 <?php theme_include('header'); ?>
+	<section>
+		<div>
+		
+		</div>
+</section>
 		<section class="content wrap" id="article-<?php echo article_id(); ?>">
+		<img class='imgquadrointerno' src="<?php echo article_custom_field('img_artigo'); ?>">
 			<h1 class='titulo-artigo'><?php echo article_title(); ?></h1>
 			<article class='artigo'>
 				<?php echo article_html(); ?>
