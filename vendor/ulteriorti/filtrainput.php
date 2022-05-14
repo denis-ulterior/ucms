@@ -15,7 +15,7 @@ function validaString($str){
     $tmp = strtolower($str);
     $filtrado = filtraValor($tmp);
     if($tmp != $filtrado){
-        return $filtrado.' Comentário filtrado';
+        return $filtrado.' Conteúdo filtrado';
     }else{
         return $str;
     }
@@ -23,7 +23,7 @@ function validaString($str){
 }
 function filtraValor($valor_f){
 
-   // return $valor_f;
+    //return $valor_f;
     $valor_f = str_replace("--", "",$valor_f);
 	$valor_f = str_replace("\"", "",$valor_f);
 	$valor_f = str_replace("'", "",$valor_f);
@@ -35,7 +35,7 @@ function filtraValor($valor_f){
 	$valor_f = str_replace("window.", "",$valor_f);
 	$valor_f = str_replace(".xml", "",$valor_f);
 	$valor_f = str_replace("/.", "",$valor_f);
-	$valor_f = str_replace("//", "",$valor_f);
+	$valor_f = str_replace("<style", "",$valor_f);
 	$valor_f = str_ireplace("($", "",$valor_f);
 	$valor_f = str_replace("/etc/", "",$valor_f);
 	$valor_f = str_ireplace("$)", "",$valor_f);
@@ -52,14 +52,14 @@ function filtraValor($valor_f){
 	$valor_f = str_ireplace("]]", "",$valor_f);
 	$valor_f = str_ireplace("(())", "",$valor_f);
 	$valor_f = str_ireplace("</textarea>", "",$valor_f);
-	$valor_f = str_ireplace("'\"", "",$valor_f);
+	$valor_f = str_ireplace("<iframe", "",$valor_f);
 	$valor_f = str_ireplace("/proc/", "",$valor_f);
 	$valor_f = str_ireplace("<!", "",$valor_f);
 	$valor_f = str_ireplace("<textarea>", "",$valor_f);
 	$valor_f = str_ireplace("<!--", "",$valor_f);
 	$valor_f = str_ireplace("script:;", "",$valor_f);
     $valor_f = str_ireplace("script:\"", "",$valor_f);
-    $valor_f = str_ireplace("\";", "",$valor_f);
+    $valor_f = str_ireplace("<script:", "",$valor_f);
     $valor_f = str_ireplace("';", "",$valor_f);
     $valor_f = str_ireplace("javascript:", "",$valor_f);
     $valor_f = str_ireplace("sink()", "",$valor_f);
@@ -67,7 +67,7 @@ function filtraValor($valor_f){
     $valor_f = str_ireplace(",x:", "",$valor_f);
     $valor_f = str_ireplace("_js_", "",$valor_f);
     $valor_f = str_ireplace(",y:", "",$valor_f);
-    $valor_f = str_ireplace("</script><script>", "",$valor_f);
+    $valor_f = str_ireplace("</script>", "",$valor_f);
     $valor_f = str_ireplace("1\"", "",$valor_f);
     $valor_f = str_ireplace(";print", "",$valor_f);
     $valor_f = str_ireplace("response.write", "",$valor_f);

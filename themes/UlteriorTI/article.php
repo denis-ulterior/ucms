@@ -7,8 +7,13 @@
 		<section class="content wrap" id="article-<?php echo article_id(); ?>">
 		<img class='imgquadrointerno' src="<?php echo article_custom_field('img_artigo'); ?>">
 			<h1 class='titulo-artigo'><?php echo article_title(); ?></h1>
-			<article class='artigo'>
-				<?php echo article_html(); ?>
+			<?php echo article_html(); ?>
+				<?php if (article_custom_field('video_yt')){?>
+				<div class="video">
+				<iframe width="560" height="315" src="https://www.youtube.com/embed/<?php echo article_custom_field('video_yt'); ?>" title="YouTube" frameborder="0" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+				
+				</div>
+				<?php } ?>
 			</article>
 	
 			<section class="footnote">
@@ -16,7 +21,7 @@
 				<p>Esse é meu <?php echo numeral(article_number(article_id()), true); ?> artigo mais antigo.<br />Contém <?php echo count_words(article_markdown()); ?> palavras <?php if (comments_open()): ?>, e ele teve <?php echo total_comments() . pluralise(total_comments(), ' comentários'); ?> por enquanto.<?php endif; ?> <?php echo article_custom_field('attribution'); ?></p>
 			</section>
 		</section>
-
+		
 		<?php if (comments_open()): ?>
 		<section class="comments">
 			<?php if (has_comments()): ?>
@@ -37,7 +42,7 @@
 				<?php endwhile; ?>
 			</ul>
 			<?php endif; ?>
-
+			
 			<form id="comment" class="commentform wrap" method="post" action="<?php echo comment_form_url(); ?>#comment">
 				<?php echo comment_form_notifications(); ?>
 				<input type="text" id="nome" name="nome"/>

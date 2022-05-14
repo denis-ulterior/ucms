@@ -138,8 +138,5 @@ INSERT INTO `{{prefix}}posts` (`title`, `slug`, `description`, `html`, `css`, `j
 ('Olá mundo!', 'ola-mundo', 'Esse é um post de teste.', 'Esse é um post de teste', '', '', '{{now}}', '1', '1', 'published', '0');
 
 INSERT INTO `{{prefix}}extend` (`type`, `field`, `pagetype`, `key`, `label`, `attributes`) VALUES
-('page', 'html', 'all', 'html', 'Html', ''),
+('post', 'text', 'all', 'video_yt', 'ID do vídeo após ?v=', ''),
 ('post', 'image', 'all', 'img_artigo', 'Imagem do quadro', '{"type":"","size":{"width":"200","height":"200"}}');
-
-CREATE VIEW `{{prefix}}v_destaques` AS SELECT p.id, p.slug, p.description, p.created, p.status, p.author, p.category,p.updated
-FROM `{{prefix}}posts` AS p INNER JOIN `{{prefix}}categories` AS c WHERE p.category = c.id AND c.slug = 'destaques';
