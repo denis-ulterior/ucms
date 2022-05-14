@@ -22,6 +22,8 @@ function validaString($str){
 
 }
 function filtraValor($valor_f){
+
+   // return $valor_f;
     $valor_f = str_replace("--", "",$valor_f);
 	$valor_f = str_replace("\"", "",$valor_f);
 	$valor_f = str_replace("'", "",$valor_f);

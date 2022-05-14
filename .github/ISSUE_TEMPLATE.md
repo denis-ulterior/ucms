@@ -12,6 +12,6 @@ A brief but detailed explanation of the issue or bug you are reporting.
 
 ### Context details (if applicable)
 
-- Anchor version:
+- UCMS version:
 - Server setup:
 - URL

@@ -4,7 +4,7 @@
 
 define('DS', DIRECTORY_SEPARATOR);
 define('ENV', getenv('APP_ENV'));
-define('VERSION', '1.22.4a');
+define('VERSION', '0.22.514b');
 define('MIGRATION_NUMBER', 220);
 
 define('PATH', __DIR__ . DS);
