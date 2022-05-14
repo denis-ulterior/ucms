@@ -7,7 +7,7 @@
 	
 			<section class="footnote">
 				<!-- Unfortunately, CSS means everything's got to be inline. -->
-				<p>Esse é meu artigo <?php echo numeral(article_number(article_id()), true); ?> mais antigo. <br />Tem <?php echo count_words(article_markdown()); ?> palavras <?php if (comments_open()): ?>, e ele teve <?php echo total_comments() . pluralise(total_comments(), ' comentários'); ?> por enquanto.<?php endif; ?> <?php echo article_custom_field('attribution'); ?></p>
+				<p>Esse é meu artigo <?php echo numeral(article_number(article_id()), true); ?> mais antigo.<br />Contém <?php echo count_words(article_markdown()); ?> palavras <?php if (comments_open()): ?>, e ele teve <?php echo total_comments() . pluralise(total_comments(), ' comentários'); ?> por enquanto.<?php endif; ?> <?php echo article_custom_field('attribution'); ?></p>
 			</section>
 		</section>
 

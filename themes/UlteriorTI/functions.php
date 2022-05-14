@@ -13,7 +13,7 @@ function numeral($number, $hideIfOne = false)
     }
 
     $test = abs($number) % 10;
-    $ext = ((abs($number) % 100 < 21 and abs($number) % 100 > 4) ? 'th' : (($test < 4) ? ($test < 3) ? ($test < 2) ? ($test < 1) ? 'th' : 'st' : 'nd' : 'º' : 'th'));
+    $ext = ((abs($number) % 100 < 21 and abs($number) % 100 > 4) ? 'º' : (($test < 4) ? ($test < 3) ? ($test < 2) ? ($test < 1) ? 'º' : 'º' : 'º' : 'º' : 'º'));
     return $number . $ext;
 }
 
