@@ -114,6 +114,15 @@ class router
     public function match()
     {
         $routes = $this->routes();
+        //filtra caracteres para URL e uris curtas demais
+        $terms = explode('/',$this->uri);
+        if(isset($terms[0])){
+            $terms[0] = filter_var($terms[0],FILTER_SANITIZE_URL);
+        if(strlen($terms[0])<=4){
+            $this->uri = 'home';
+        }
+    }
+        //print_r (strlen($terms[1])); die();
 
         // try a simple match
         if (array_key_exists($this->uri, $routes)) {
